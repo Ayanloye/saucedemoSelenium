@@ -1,4 +1,4 @@
-name: Selenium Python Pipeline
+name: Selenium Python Workflow
 
 on: [push]
 
@@ -9,12 +9,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Python and Selenium
+      - name: Setup Python
         uses: actions/setup-python@v3
         with:
           python-version: '3.x'
-          commands: |
-            pip install selenium
+
+      - name: Install Selenium
+        run: |
+          pip install selenium
 
       - name: Run Selenium tests
         run: |
