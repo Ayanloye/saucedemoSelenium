@@ -56,7 +56,7 @@ password_field.send_keys("secret_sauce")
 # Find and click the login button
 login_button = driver.find_element(By.ID, "login-button")
 login_button.click()
-time.sleep(20)
+time.sleep(5)
 
 # Close the browser
 driver.quit()
