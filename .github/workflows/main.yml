@@ -1,18 +1,21 @@
-name: Selenium Tests
+name: Selenium Python Pipeline
 
-on:
-  push:
-    branches:
-      - main
-      - dev
+on: [push]
 
 jobs:
-  selenium:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Install dependencies
-        run: pip install selenium
+        uses: actions/checkout@v3
+
+      - name: Setup Python and Selenium
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+          commands: |
+            pip install selenium
+
       - name: Run Selenium tests
-        run: python testing.py
+        run: |
+          python -m pytest tests/
